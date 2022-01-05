@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "../components";
 import { Title, Subtitle } from "../../../components/typography";
 import { Button, Group, Label, Input, Hint, Checkbox } from "../../../components/ui";
 
 export function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
   function onSubmit(event: any) {
     event.preventDefault();
@@ -20,26 +23,33 @@ export function Login() {
           <Label htmlFor="email">Email</Label>
           <Input
             autoFocus
+            value={email}
             required
             id="email"
             type="email"
             placeholder="example@gmail.com"
             className="full-width"
+            onChange={({ target }) => setEmail(target.value)}
           />
         </Group>
         <Group>
           <Label htmlFor="password">Password</Label>
           <Input
             required
+            value={password}
             id="password"
             type="password"
             placeholder="••••••••"
             minLength={8}
             className="full-width"
+            onChange={({ target }) => setPassword(target.value)}
           />
           <Hint>Must be at least 8 characters.</Hint>
         </Group>
-        <Checkbox checked={true} onChange={() => {}}>
+        <Checkbox
+          checked={rememberMe}
+          onChange={() => setRememberMe(!rememberMe)}
+        >
           Remember-me
         </Checkbox>
         <Button type="submit" className="full-width">Sign in</Button>
