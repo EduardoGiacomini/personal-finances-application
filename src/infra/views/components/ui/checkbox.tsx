@@ -100,7 +100,13 @@ export const Checkbox: React.FC<IProps> = ({
       className={className}
     >
       {children}
-      <CheckboxInput readOnly tabIndex={1} checked={checked} {...props} />
+      <CheckboxInput
+        readOnly
+        tabIndex={1}
+        checked={checked}
+        onChange={onChange}
+        {...props}
+      />
       <CheckboxCheckmark />
     </CheckboxContainer>
   );
