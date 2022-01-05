@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "../components";
 import { Title, Subtitle } from "../../../components/typography";
-import { Button, Group, Label, Input, Hint } from "../../../components/ui";
+import { Button, Group, Label, Input, Hint, Checkbox } from "../../../components/ui";
 
 export function Login() {
 
@@ -39,6 +39,9 @@ export function Login() {
           />
           <Hint>Must be at least 8 characters.</Hint>
         </Group>
+        <Checkbox checked={true} onChange={() => {}}>
+          Remember-me
+        </Checkbox>
         <Button type="submit" className="full-width">Sign in</Button>
       </form>
     </Container>
