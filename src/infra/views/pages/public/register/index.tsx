@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container } from "../components";
 import { Title, Subtitle } from "../../../components/typography";
-import {Button, Group, Label, Input, Hint, Checkbox} from "../../../components/ui";
+import { Button, Group, Label, Input, Hint, Checkbox } from "../../../components/ui";
 
 export function Register() {
   const [name, setName] = useState("");
