@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { Container } from "../components";
 import { Title, Subtitle } from "../../../components/typography";
-import { Button, Group, Label, Input, Hint } from "../../../components/ui";
+import {Button, Group, Label, Input, Hint, Checkbox} from "../../../components/ui";
 
 export function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [agreeWithTerms, setAgreeWithTerms] = useState(false);
 
   function onSubmit(event: any) {
     event.preventDefault();
-    console.log({ name, email, password });
+    console.log({ name, email, password, agreeWithTerms });
   }
 
   return (
@@ -59,6 +60,12 @@ export function Register() {
           />
           <Hint>Must be at least 8 characters.</Hint>
         </Group>
+        <Checkbox
+          checked={agreeWithTerms}
+          onChange={() => setAgreeWithTerms(!agreeWithTerms)}
+        >
+          Eu aceito com os Termos de Serviço e Condições e com a Política de Privacidade.
+        </Checkbox>
         <Button type="submit" className="full-width">Sign up</Button>
       </form>
     </Container>

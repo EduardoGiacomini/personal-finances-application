@@ -10,6 +10,7 @@ export function Login() {
 
   function onSubmit(event: any) {
     event.preventDefault();
+    console.log({ email, password, rememberMe });
   }
 
   return (
