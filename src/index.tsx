@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Login, Register } from "./infra/views/pages/public";
+import { SignIn, SignUp } from "./infra/views/pages/public";
 import { theme } from "./infra/vendors";
 import { reportWebVitals } from "./infra/assets/analytics";
 import "./infra/assets/styles/index.css";
@@ -12,8 +12,8 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

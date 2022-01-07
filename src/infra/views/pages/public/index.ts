@@ -1,4 +1,4 @@
-import { Login } from "./login";
-import { Register } from "./register";
+import { SignIn } from "./sign-in";
+import { SignUp } from "./sign-up";
 
-export { Login, Register };
+export { SignIn, SignUp };
