@@ -29,9 +29,10 @@ const CheckboxContainer = styled.label`
     display: block;
   }
 
+  &:focus,
   &:focus-visible {
     border: 2px solid ${({ theme }) => theme.colors.primary["400"]};
-    box-shadow: 0 0 6px ${({ theme }) => theme.colors.primary["300"]};
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary["200"]};
     outline: none;
   }
 `;

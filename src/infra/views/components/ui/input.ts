@@ -24,9 +24,10 @@ export const Input = styled.input`
     color: ${({ theme }) => theme.colors.neutral["400"]};
   }
 
+  &:focus,
   &:focus-visible {
     border: 2px solid ${({ theme }) => theme.colors.primary["400"]};
-    box-shadow: 0 0 4px ${({ theme }) => theme.colors.primary["200"]};
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary["200"]};
     outline: none;
   }
 `;
