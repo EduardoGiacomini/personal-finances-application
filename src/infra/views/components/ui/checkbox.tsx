@@ -8,8 +8,8 @@ const CheckboxContainer = styled.label`
   font-size: 1.4rem;
   color: ${({ theme }) => theme.colors.neutral["400"]};
   display: inline-block;
-  margin-bottom: 2rem;
-  padding-left: 2.5rem;
+  margin-bottom: 1.5rem;
+  padding: 2.5rem 2.5rem 0.5rem 2.5rem;
   position: relative;
   transition: all 0.2s;
 
@@ -49,7 +49,7 @@ const CheckboxCheckmark = styled.span`
   background-color: ${({ theme }) => theme.colors.neutral["200"]};
   border-radius: 3px;
   position: absolute;
-  top: 0;
+  top: 3px;
   left: 0;
   height: 1.9rem;
   width: 1.9rem;
