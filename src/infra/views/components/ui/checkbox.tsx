@@ -9,7 +9,7 @@ const CheckboxContainer = styled.label`
   color: ${({ theme }) => theme.colors.neutral["400"]};
   display: inline-block;
   margin-bottom: 1.5rem;
-  padding: 2.5rem 2.5rem 0.5rem 2.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 2.5rem;
   position: relative;
   transition: all 0.2s;
 
