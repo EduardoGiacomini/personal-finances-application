@@ -1,3 +1,3 @@
-import { AuthenticateApi } from "./authenticate.api";
+import { AccountApi } from "./account.api";
 
-export { AuthenticateApi };
+export { AccountApi };

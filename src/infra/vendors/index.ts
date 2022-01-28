@@ -1,3 +1,4 @@
+import { api } from "./axios";
 import { theme } from "./styledcomponents";
 
-export { theme };
+export { api, theme };
