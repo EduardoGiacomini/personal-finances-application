@@ -3,17 +3,25 @@ import { useNavigate } from "react-router-dom";
 import { Container, Header } from "../components";
 import { Title, Subtitle } from "../../../components/typography";
 import { Button, Group, Label, Input, Hint, Checkbox } from "../../../components/ui";
+import { useUser } from "../../../context/user";
+import {AccountApi} from "../../../../../domain/ports/apis";
 
-export function SignIn() {
+export function SignIn({ accountApi }: Props) {
   const navigate = useNavigate();
+
+  const { user, setUser } = useUser();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
 
-  function onSubmit(event: any) {
-    event.preventDefault();
-    console.log({ email, password, rememberMe });
+  const onSubmit = async (event: any) => {
+    try {
+      event.preventDefault();
+      const { user } = await accountApi.authenticate({email, password});
+      setUser(user);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -59,15 +67,13 @@ export function SignIn() {
             />
             <Hint>Must be at least 8 characters.</Hint>
           </Group>
-          <Checkbox
-            checked={rememberMe}
-            onChange={() => setRememberMe(!rememberMe)}
-          >
-            Remember-me
-          </Checkbox>
           <Button type="submit" className="full-width">Sign in</Button>
         </form>
       </Container>
     </>
   );
 }
+
+type Props = {
+  accountApi: AccountApi
+};

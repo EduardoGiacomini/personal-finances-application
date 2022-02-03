@@ -12,17 +12,23 @@ export class AccountAxiosApi implements AccountApi {
   }): Promise<{ user: User; token: string }> {
     const {
       data: { user, token },
-    } = await api.post<{ user: User; token: string }>("/auth", {
+    } = await api.post<{ user: User; token: string }>("/api/auth", {
       email,
       password,
     });
+    this.setAuthorizationToken(token);
     return { user, token };
   }
 
   async refreshToken(): Promise<{ user: User; token: string }> {
     const {
       data: { user, token },
-    } = await api.post<{ user: User; token: string }>("/refresh");
+    } = await api.post<{ user: User; token: string }>("/api/refresh");
+    this.setAuthorizationToken(token);
     return { user, token };
+  }
+
+  setAuthorizationToken(token: string) {
+    api.defaults.headers.common = { Authorization: `Bearer ${token}` };
   }
 }

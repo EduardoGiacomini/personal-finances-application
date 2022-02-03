@@ -1,24 +1,13 @@
-import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { api } from "../../vendors";
-import { User } from "../../../domain/entities";
-import { AccountAxiosApi } from "../../adapters/apis";
-
-export const UserContext = createContext<UserContextType>({});
-
-export const useUser = () => useContext(UserContext);
+import { ReactNode, useEffect, useState } from "react";
+import { api } from "../../../vendors";
+import { User } from "../../../../domain/entities";
+import { AccountAxiosApi } from "../../../adapters/apis";
+import { UserContext } from "./index";
 
 export function UserWrapper({ children }: UserWrapperProps) {
   const accountApi = new AccountAxiosApi();
 
-  const [user, setUser] = useState<User | undefined>(undefined);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -37,7 +26,7 @@ export function UserWrapper({ children }: UserWrapperProps) {
 
       setTimeout(() => {
         refreshToken();
-      }, expires - 500);
+      }, expires - 1000);
     } finally {
       setLoading(false);
     }
@@ -49,11 +38,6 @@ export function UserWrapper({ children }: UserWrapperProps) {
     </UserContext.Provider>
   );
 }
-
-type UserContextType = {
-  user?: User;
-  setUser?: Dispatch<SetStateAction<User | undefined>>;
-};
 
 type UserWrapperProps = {
   children: ReactNode;
