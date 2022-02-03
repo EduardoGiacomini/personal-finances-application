@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, createContext, useContext } from "react";
-import { User } from "../../../../domain/entities";
+import { User } from "../../../data/entities";
 
 export const UserContext = createContext<UserContextType>({
   user: null,

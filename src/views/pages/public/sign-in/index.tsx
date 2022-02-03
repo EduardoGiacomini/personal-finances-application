@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Header } from "../components";
 import { Title, Subtitle } from "../../../components/typography";
-import { Button, Group, Label, Input, Hint, Checkbox } from "../../../components/ui";
+import { Button, Group, Label, Input, Hint } from "../../../components/ui";
 import { useUser } from "../../../context/user";
-import {AccountApi} from "../../../../../domain/ports/apis";
+import { authenticate } from "../../../../data/services/account";
 
-export function SignIn({ accountApi }: Props) {
+export function SignIn() {
   const navigate = useNavigate();
 
   const { user, setUser } = useUser();
@@ -17,7 +17,7 @@ export function SignIn({ accountApi }: Props) {
   const onSubmit = async (event: any) => {
     try {
       event.preventDefault();
-      const { user } = await accountApi.authenticate({email, password});
+      const { user } = await authenticate({email, password});
       setUser(user);
     } catch (error) {
       console.log(error);
@@ -73,7 +73,3 @@ export function SignIn({ accountApi }: Props) {
     </>
   );
 }
-
-type Props = {
-  accountApi: AccountApi
-};

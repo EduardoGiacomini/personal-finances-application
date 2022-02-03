@@ -1,32 +1,27 @@
 import { ReactNode, useEffect, useState } from "react";
-import { api } from "../../../vendors";
-import { User } from "../../../../domain/entities";
-import { AccountAxiosApi } from "../../../adapters/apis";
+import { User } from "../../../data/entities";
+import { refreshToken } from "../../../data/services/account";
 import { UserContext } from "./index";
 
 export function UserWrapper({ children }: UserWrapperProps) {
-  const accountApi = new AccountAxiosApi();
-
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      await refreshToken();
+      await generateAccessTokenWithRefreshToken();
     })();
   }, []);
 
-  async function refreshToken() {
+  async function generateAccessTokenWithRefreshToken() {
     try {
-      const { user, token } = await accountApi.refreshToken();
-
-      Object.assign(api.defaults, { headers: { authorization: token } });
+      const { user } = await refreshToken();
       setUser(user);
-      const expires = 60000;
-
+      const expires = 60000; // TODO: get expires time from backend
       setTimeout(() => {
-        refreshToken();
+        generateAccessTokenWithRefreshToken();
       }, expires - 1000);
+    } catch (error) {
     } finally {
       setLoading(false);
     }
