@@ -5,7 +5,7 @@ import { theme } from "./vendors";
 import { UserWrapper } from "./views/context/user";
 import { ApplicationRoutes } from "./views/routes";
 import { reportWebVitals } from "./assets/analytics";
-import "./infra/assets/styles/index.css";
+import "./assets/styles/index.css";
 
 ReactDOM.render(
   <React.StrictMode>
